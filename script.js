@@ -33,10 +33,17 @@ let secondNumber;
 // FUNCTIONS
 
 function deleteCharacter() {
-if (calcDisplay.value === "") {
+    if (calcDisplay.value === "") {
         resetCalcState();
     }    
 
+    if (currentNumber !== "") {
+        currentNumber = currentNumber.slice(0, -1);
+    } else if (operator !== "") {
+        operator = operator.slice(0, -1);
+    } else {
+        firstNumber = firstNumber.slice(0, -1);
+    }
     calcDisplay.value = calcDisplay.value.slice(0, -1);
     histDisplay.value = histDisplay.value.slice(0, 0);
 };
