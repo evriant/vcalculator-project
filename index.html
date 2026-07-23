@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCalculator</title>
+
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css"/>
+    
+    <!--Assets-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=backspace" />
+    <!--End of Assets-->
+</head>
+<body>
+    <div id="calculatorBG">
+        <h1 class="mainHeader">VCalculator</h1>
+        <p class="pText">A simple web calculator.</p>
+
+        <div class="calcHistCont">
+            <input id="histDisplay" class="display" type="text" readonly placeholder="Current Calculation"/>
+        </div>
+
+        <div class="calcDispCont">
+            <input id="calcDisplay" class="display" type="text" readonly/>
+        </div>
+
+        <div class="calcKeypad">
+            <div class="numRow1 numRow">
+                <button class="calcButton number" value="7">7</button>
+                <button class="calcButton number" value="8">8</button>
+                <button class="calcButton number" value="9">9</button>
+                <button class="calcButton operator iconed" value="+" data-operator="+">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                </button>
+            </div>
+            <div class="numRow2 numRow">
+                <button class="calcButton number" value="4">4</button>
+                <button class="calcButton number" value="5">5</button>
+                <button class="calcButton number" value="6">6</button>
+                <button class="calcButton operator iconed" value="-" data-operator="-">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus-icon lucide-minus"><path d="M5 12h14"/></svg>
+                </button>
+            </div>
+            <div class="numRow3 numRow">
+                <button class="calcButton number" value="1">1</button>
+                <button class="calcButton number" value="2">2</button>
+                <button class="calcButton number" value="3">3</button>
+                <button class="calcButton operator iconed" value="*" data-operator="×">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+            <div class="numRow4 numRow">
+                <button class="calcButton backspace iconed">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-delete-icon lucide-delete"><path d="M10 5a2 2 0 0 0-1.344.519l-6.328 5.74a1 1 0 0 0 0 1.481l6.328 5.741A2 2 0 0 0 10 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z"/><path d="m12 9 6 6"/><path d="m18 9-6 6"/></svg>
+                </button>
+                <button class="calcButton number" value="0">0</button>
+                <button class="calcButton dot" value=".">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot"><circle cx="12" cy="12" r="1"/></svg>
+                </button>
+                <button class="calcButton operator iconed" value="/" data-operator="÷">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-divide-icon lucide-divide"><circle cx="12" cy="6" r="1"/><line x1="5" x2="19" y1="12" y2="12"/><circle cx="12" cy="18" r="1"/></svg>
+                </button>
+            </div>
+            <div class="numRow5 numRow">
+                <button class="calcButton equal iconed">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-equal-icon lucide-equal"><line x1="5" x2="19" y1="9" y2="9"/><line x1="5" x2="19" y1="15" y2="15"/></svg>
+                </button>
+                <button class="calcButton clearAll iconed shakeIcon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--<div class="debugPanelCont">
+        <input type="text" class="debugPanel">
+    </div>-->
+</body>
+</html>
