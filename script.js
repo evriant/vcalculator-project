@@ -23,11 +23,11 @@ let secondNumber;
 
 // DEBUGGER
 
-//function updateDP() {
-//    debugPanel.value = `${firstNumber} ${operator} ${secondNumber} ${newNumber}  ${currentNumber}`;
-//};
+function updateDP() {
+    debugPanel.value = `${firstNumber} ${operator} ${secondNumber} ${newNumber}  ${currentNumber}`;
+};
 
-//const debugPanel = document.querySelector(".debugPanel");
+const debugPanel = document.querySelector(".debugPanel");
 
 
 // FUNCTIONS
@@ -62,6 +62,14 @@ function resetCalcState() {
     newNumber = true;
 };
 
+function resetInternalState() {
+    histDisplay.value = histDisplay.value.slice(0, 0);
+    firstNumber = "";
+    operator = "";
+    currentNumber = "";
+    newNumber = true;
+};
+
 function showError(message) {
     calcDisplay.value = message;
 
@@ -79,6 +87,8 @@ backspace.addEventListener("mousedown", function () {
     deleteDelay = setTimeout(function () {
         deleteInterval = setInterval(function () {
             deleteCharacter();
+
+            updateDP();
         }, 75);
     }, 300);
 });
@@ -108,6 +118,8 @@ number.forEach(function (button) {
 
         currentNumber += button.value;
         calcDisplay.value += button.value;
+
+        updateDP();
     });
 });
 
@@ -146,6 +158,12 @@ equals.addEventListener("click", function () {
 
     let answer;
 
+    if (!operator) {
+        showError("Nothing to calculate!");
+        resetInternalState();
+        return;
+    }
+
     if (operator === "+") {
         answer = firstNumber + secondNumber;
     } else if (operator === "-") {
@@ -155,13 +173,16 @@ equals.addEventListener("click", function () {
     } else if (operator === "/") {
         if (firstNumber !== undefined && operator !== undefined && secondNumber === 0) {
                 showError("Cannot divide by zero!");
+                resetInternalState();
                 return;
             }
         answer = firstNumber / secondNumber;
     } else if (calcDisplay.value === "") {
         showError("Nothing to calculate!");
+        resetInternalState();
     } else {
-        showError("Unknown operator!"); 
+        showError("Unknown operator!");
+        resetInternalState();
     } 
 
 
@@ -175,6 +196,8 @@ equals.addEventListener("click", function () {
     firstNumber = answer;
     currentNumber = answer.toString();
     newNumber = true;
+
+    updateDP();
 });
 
 // CONDITIONS
